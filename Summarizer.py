@@ -12,6 +12,7 @@ unique_id = link.split("=")[-1]
 sub = YouTubeTranscriptApi.get_transcript(unique_id)  
 subtitle = " ".join([x['text'] for x in sub])
 
+subtitle = " ".join(subtitle.split())
 print(subtitle)
 
 #nlp = spacy.load('en_core_web_lg')
@@ -52,6 +53,5 @@ for sent in doc.sents:
 summarized_sentences = nlargest(int(a/5),sent_strength,key = sent_strength.get)
 
 final_sentences = [w.text for w in summarized_sentences]
-for senten in final_sentences:
-	result = " ".join(senten.split())
-	print(result)
+summary = ' '.join(final_sentences)
+print(summary) 
