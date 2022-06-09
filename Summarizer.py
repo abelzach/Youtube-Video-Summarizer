@@ -52,5 +52,6 @@ for sent in doc.sents:
 summarized_sentences = nlargest(int(a/5),sent_strength,key = sent_strength.get)
 
 final_sentences = [w.text for w in summarized_sentences]
-summary = ' '.join(final_sentences)
-print(summary)
+for senten in final_sentences:
+	result = " ".join(senten.split())
+	print(result)
