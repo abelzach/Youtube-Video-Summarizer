@@ -50,8 +50,16 @@ for sent in doc.sents:
       else:
         sent_strength[sent] = freq_word[word.text]
 
-summarized_sentences = nlargest(int(a/5),sent_strength,key = sent_strength.get)
+top_sentences=(sorted(sent_strength.values())[::-1])
+top_percent_sentence = int(0.1*len(top_sentences))
+top_sent = top_sentences[:top_percent_sentence]
 
-final_sentences = [w.text for w in summarized_sentences]
-summary = ' '.join(final_sentences)
-print(summary) 
+summary=[]
+for sent,strength in sent_strength.items():
+       if strength in top_sent:
+          summary.append(sent)
+       else:
+          continue
+
+result = ''.join(map(str,summary))
+print(result)
