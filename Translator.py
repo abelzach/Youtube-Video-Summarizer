@@ -8,4 +8,5 @@ for i in a :
     a = 'hi'
     out = trans.translate(i,  dest = a)
     res = res + str(out.text)
+    res = res + ' . '
 print(res)
